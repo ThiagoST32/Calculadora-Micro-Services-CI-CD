@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: CalculadorMIcroServices
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info,health,metrics
