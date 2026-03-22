@@ -78,7 +78,7 @@ public class OperacoesUtils {
                 }
                 return true;
             } catch (NumberFormatException e){
-                throw new RuntimeException(e.getMessage());
+                throw new InvalidInputFormatException();
             }
         }
         return false;
