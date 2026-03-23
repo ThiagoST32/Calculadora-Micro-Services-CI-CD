@@ -2,6 +2,11 @@ spring:
   application:
     name: CalculadorMIcroServices
 
+feign:
+  client:
+    calcRepo:
+      url: "http://localhost:8081/api/v1/calcRepo"
+
 server:
   port: 8083
 

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
-@FeignClient(value = "operationsPersist", url = "http://localhost:8081/api/v1/calcRepo", configuration = ConfigFeign.class)
+@FeignClient(value = "operationsPersist", url = "${feign.client.calcRepo.url}", configuration = ConfigFeign.class)
 public interface OperacaoPersistApi {
 
     @RequestMapping(method = RequestMethod.POST, value = "/register")
