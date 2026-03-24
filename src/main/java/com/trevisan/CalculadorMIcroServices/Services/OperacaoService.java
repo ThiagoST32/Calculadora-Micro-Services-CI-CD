@@ -2,6 +2,7 @@ package com.trevisan.CalculadorMIcroServices.Services;
 
 import com.trevisan.CalculadorMIcroServices.Domains.DTOs.OperacaoRequestDTO;
 import com.trevisan.CalculadorMIcroServices.Domains.DTOs.OperacaoResponseDTO;
+import com.trevisan.CalculadorMIcroServices.Domains.DTOs.OperationRequestPersistDTO;
 import com.trevisan.CalculadorMIcroServices.Utils.OperacoesUtils;
 import com.trevisan.CalculadorMIcroServices.infra.Feign.OperacaoPersistApi;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,8 @@ public class OperacaoService {
 
     public OperacaoResponseDTO calculoOperacao(OperacaoRequestDTO operaDTO){
         List<String> values = new ArrayList<>();
-        values.add(operaDTO.valor1());
-        values.add(operaDTO.valor2());
+        values.add(operaDTO.valueOne());
+        values.add(operaDTO.valueTwo());
         
         utils.verifyIfListValuesIsAppropriate(values);
         var tipoDeOperacao = operaDTO.tipoDeOperacao();
@@ -41,7 +42,13 @@ public class OperacaoService {
             result = String.valueOf(utils.calculoComNumerosDecimais(values, tipoDeOperacao));
         }
 
-        persistApi.persistNewOperation(operaDTO);
+        OperationRequestPersistDTO requestPersist = new OperationRequestPersistDTO(
+                operaDTO.valueOne(),
+                operaDTO.valueTwo(),
+                result,
+                operaDTO.tipoDeOperacao()
+        );
+        persistApi.persistNewOperation(requestPersist);
 
         return new OperacaoResponseDTO(
                 result

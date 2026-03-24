@@ -1,7 +1,7 @@
 package com.trevisan.CalculadorMIcroServices.infra.Feign;
 
-import com.trevisan.CalculadorMIcroServices.Domains.DTOs.OperacaoRequestDTO;
 import com.trevisan.CalculadorMIcroServices.Domains.DTOs.OperacaoResponseDTO;
+import com.trevisan.CalculadorMIcroServices.Domains.DTOs.OperationRequestPersistDTO;
 import com.trevisan.CalculadorMIcroServices.infra.Config.ConfigFeign;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +13,7 @@ import java.util.List;
 public interface OperacaoPersistApi {
 
     @RequestMapping(method = RequestMethod.POST, value = "/register")
-    void persistNewOperation(OperacaoRequestDTO dto);
+    void persistNewOperation(OperationRequestPersistDTO dto);
 
     @RequestMapping(method = RequestMethod.GET, value = "")
     List<OperacaoResponseDTO> getOperations();

@@ -33,7 +33,7 @@ public class OperacoesUtils {
 
             case SUBTRACAO -> result = firstValueExtracted - lastValueExtracted;
 
-            case MUTIPLICACAO -> result = firstValueExtracted * lastValueExtracted;
+            case MULTIPLICACAO -> result = firstValueExtracted * lastValueExtracted;
         }
         return result;
     }
@@ -49,7 +49,7 @@ public class OperacoesUtils {
 
             case SUBTRACAO -> result = firstValueExtracted.subtract(lastValueExtracted).setScale(2, HALF_UP);
 
-            case MUTIPLICACAO -> result = firstValueExtracted.multiply(lastValueExtracted).setScale(2, HALF_UP);
+            case MULTIPLICACAO -> result = firstValueExtracted.multiply(lastValueExtracted).setScale(2, HALF_UP);
         }
         return result;
     }
