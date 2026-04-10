@@ -1,6 +1,6 @@
 package com.trevisan.CalculadorMIcroServices.infra.Feign;
 
-import com.trevisan.CalculadorMIcroServices.Domains.DTOs.OperacaoResponseDTO;
+import com.trevisan.CalculadorMIcroServices.Domains.DTOs.OperacaoResponseDbDTO;
 import com.trevisan.CalculadorMIcroServices.Domains.DTOs.OperationRequestPersistDTO;
 import com.trevisan.CalculadorMIcroServices.infra.Config.ConfigFeign;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -16,9 +16,9 @@ public interface OperacaoPersistApi {
     void persistNewOperation(OperationRequestPersistDTO dto);
 
     @RequestMapping(method = RequestMethod.GET, value = "")
-    List<OperacaoResponseDTO> getOperations();
+    List<OperacaoResponseDbDTO> getOperations();
 
     @RequestMapping(method = RequestMethod.GET, value = "getPreviousOperation")
-    OperacaoResponseDTO getPreviousOperation();
+    OperacaoResponseDbDTO getPreviousOperation();
 
 }

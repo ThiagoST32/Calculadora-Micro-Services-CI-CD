@@ -2,6 +2,7 @@ package com.trevisan.CalculadorMIcroServices.Controllers;
 
 import com.trevisan.CalculadorMIcroServices.Domains.DTOs.OperacaoRequestDTO;
 import com.trevisan.CalculadorMIcroServices.Domains.DTOs.OperacaoResponseDTO;
+import com.trevisan.CalculadorMIcroServices.Domains.DTOs.OperacaoResponseDbDTO;
 import com.trevisan.CalculadorMIcroServices.Services.OperacaoService;
 import com.trevisan.CalculadorMIcroServices.infra.Feign.OperacaoPersistApi;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +31,12 @@ public class OperacaoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<OperacaoResponseDTO>>getAllOperations(){
+    public ResponseEntity<List<OperacaoResponseDbDTO>>getAllOperations(){
         return new ResponseEntity<>(persistApi.getOperations(), HttpStatus.OK);
     }
 
     @GetMapping("/prev")
-    public ResponseEntity<OperacaoResponseDTO>getPreviousOperation(){
+    public ResponseEntity<OperacaoResponseDbDTO>getPreviousOperation(){
         return new ResponseEntity<>(persistApi.getPreviousOperation(), HttpStatus.OK);
     }
 }
